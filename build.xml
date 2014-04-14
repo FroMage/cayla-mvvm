@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Sample Ceylon build script using Ant.
+-->
+<project name="cayla-mvvm" default="default">
+
+    <property name="ceylon.home" value="/usr/share/ceylon/1.1.0"/>
+    <property name="ceylon.ant.lib" value="${ceylon.home}/lib/ceylon-ant.jar"/>
+    <property name="source.encoding" value="UTF-8"/>
+
+    <target name="ceylon-ant-taskdefs">
+        <path id="ant-tasks">
+            <pathelement location="${ceylon.ant.lib}"/>
+        </path>
+        <typedef resource="com/redhat/ceylon/ant/antlib.xml" classpathref="ant-tasks"/>
+    </target>
+	
+    <target name="default" depends="compile">
+    </target>
+
+    <target name="compile" depends="ceylon-ant-taskdefs">
+        <ceylon-compile-js encoding="${source.encoding}">
+            <module name="io.cayla.mvvm"/>
+        </ceylon-compile-js>
+    </target>
+
+    <target name="compile-todo" depends="compile,repo">
+        <ceylon-compile-js encoding="${source.encoding}">
+            <module name="io.cayla.todomvc"/>
+        </ceylon-compile-js>
+    </target>
+
+    <target name="repo" depends="ceylon-ant-taskdefs">
+        <ceylon-copy js="true" recursive="true">
+            <module name="ceylon.language" version="1.1.0"/>
+            <module name="io.cayla.mvvm" version="0.1.0"/>
+            <module name="io.cayla.todomvc" version="0.1.0"/>
+        </ceylon-copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="modules"/>
+    </target>
+
+</project>
