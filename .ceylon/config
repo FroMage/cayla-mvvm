@@ -1,0 +1,10 @@
+
+[compiler]
+source=./source
+resource=./resource
+
+[repositories]
+lookup=./rep
+
+[defaults]
+encoding=UTF-8
