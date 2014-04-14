@@ -19,7 +19,7 @@ object dependant {
     }
     
     shared Set<Observable<Object>> end() {
-        assert(exists ret = stack.removeLast());
+        assert(exists ret = stack.pop());
         return ret.observables;
     }
     

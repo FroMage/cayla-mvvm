@@ -32,7 +32,7 @@ shared class ComputedObservable<Value>(Value() closure) satisfies Observable<Val
                 evaluating = false;
                 log.debug("Computed ``this``: stopping evaluation");
             }
-            for (dependency->subscription in HashMap(dependencies)) {
+            for (dependency->subscription in HashMap{*dependencies}) {
                 if (!observed.contains(dependency)) {
                     log.debug("Computed ``this``: disposing subscription ``subscription``");
                     dependencies.remove(dependency);

@@ -3,6 +3,7 @@ import io.cayla.mvvm { ... }
 import io.cayla.mvvm.expression { ... }
 import io.cayla.mvvm.dom { ... }
 import ceylon.language { List }
+import ceylon.collection { LinkedList }
 
 shared class Meal(shared String name, shared Integer price) {
 }
@@ -25,7 +26,7 @@ shared class AnHandler() {
 
 shared test void testExpression() {
     SeatReservation reservation = SeatReservation("julien", Meal("pasta", 10));
-    ViewModel vm = ViewModel(LazyList<SeatReservation>({reservation}));
+    ViewModel vm = ViewModel(LinkedList<SeatReservation>{reservation});
     value e1 = ClassExpression<SeatReservation>().attribute(`SeatReservation.initialMeal`).attribute(`Meal.price`);
     value v1 = e1.traverse(reservation);
     assertEquals(10, v1);

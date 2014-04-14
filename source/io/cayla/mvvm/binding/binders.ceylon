@@ -143,8 +143,8 @@ shared object binders {
                     if (is [Value, Change] next) {
                         switch (next[1]) 
                         case (removed) {
-                            values.remove(index);
-                            assert(exists removedContext = contexts.remove(index));
+                            values.delete(index);
+                            assert(exists removedContext = contexts.delete(index));
                             removedContext.destroy();
                         }
                         case (added) {

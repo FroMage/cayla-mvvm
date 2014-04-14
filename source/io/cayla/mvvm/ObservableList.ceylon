@@ -29,9 +29,9 @@ shared class ObservableList<Element>(
         return (super of Identifiable).hash;
     }
     
-    shared actual List<Element> clone {
+    shared actual MutableList<Element> clone() {
         dependant.report(this);
-        return list.clone;
+        return list.clone();
     }
     
     shared actual Element? get(Integer index) {
@@ -89,8 +89,8 @@ shared class ObservableList<Element>(
         subscribers.notify(list);
     }
     
-    shared actual void removeElement(Element val) {
-        list.removeElement(val);
+    shared actual void remove(Element val) {
+        list.remove(val);
         subscribers.notify(list);
     }
     
@@ -104,8 +104,8 @@ shared class ObservableList<Element>(
         subscribers.notify(list);
     }
     
-    shared actual Element? remove(Integer index) {
-        value ret = list.remove(index);
+    shared actual Element? delete(Integer index) {
+        value ret = list.delete(index);
         subscribers.notify(list);
         return ret;
     }
@@ -113,4 +113,64 @@ shared class ObservableList<Element>(
     shared actual List<Element> getValue() {
         return this;
     }
+    
+    shared actual void deleteSegment(Integer from, Integer length) {
+        list.deleteSegment(from, length);
+        subscribers.notify(list);
+    }
+    
+    shared actual void deleteSpan(Integer from, Integer to) {
+        list.deleteSpan(from, to);
+        subscribers.notify(list);
+    }
+    
+    shared actual void infill(Element replacement) {
+        list.infill(replacement);
+        subscribers.notify(list);
+    }
+    
+    shared actual void prune() {
+        list.prune();
+        subscribers.notify(list);
+    }
+    
+    shared actual void removeAll({Element*} elements) {
+        list.removeAll(elements);
+        subscribers.notify(list);
+    }
+    
+    shared actual Boolean removeFirst(Element element){
+        value ret = list.removeFirst(element);
+        subscribers.notify(list);
+        return ret;
+    }
+    
+    shared actual Boolean removeLast(Element element) {
+        value ret = list.removeLast(element);
+        subscribers.notify(list);
+        return ret;
+    }
+    
+    shared actual void replace(Element element, Element replacement) {
+        list.replace(element, replacement);
+        subscribers.notify(list);
+    }
+    
+    shared actual Boolean replaceFirst(Element element, Element replacement) {
+        value ret = list.replaceFirst(element, replacement);
+        subscribers.notify(list);
+        return ret;
+    }
+    
+    shared actual Boolean replaceLast(Element element, Element replacement) {
+        value ret = list.replaceLast(element, replacement);
+        subscribers.notify(list);
+        return ret;
+    }
+    
+    shared actual void truncate(Integer size) {
+        list.truncate(size);
+        subscribers.notify(list);
+    }
+    
 }

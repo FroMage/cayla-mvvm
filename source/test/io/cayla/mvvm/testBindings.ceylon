@@ -98,7 +98,7 @@ shared test void testForEach() {
         Person juu = Person(Property("juu"), Property(""));
         users.add(juu);
         assertEquals(3, added.getChildren().size);
-        users.removeElement(bar);
+        users.remove(bar);
         assertEquals(2, added.getChildren().size);
         users.clear();
         assertEquals(0, added.getChildren().size);

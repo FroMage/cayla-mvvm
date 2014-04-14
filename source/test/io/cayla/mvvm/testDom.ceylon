@@ -1,12 +1,13 @@
 import io.cayla.mvvm.dom { DomNode, querySelectorAll, DomEvent, element }
 import ceylon.test { test, assertTrue, assertFalse, assertEquals }
+import ceylon.collection { HashSet }
 
 shared test void testQuerySelectorAll() {
     withFragment(void (DomNode fragment) {
         value pre = fragment.addElement("pre");
         pre.addClass("foo");
         value nodes = querySelectorAll(".foo");
-        assertEquals(LazyList<DomNode>({pre}), LazyList<DomNode>(nodes));
+        assertEquals(HashSet<DomNode>{pre}, HashSet<DomNode>{*nodes});
     });
 }
 

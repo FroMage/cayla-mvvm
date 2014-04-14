@@ -20,7 +20,7 @@ class Subscribers<Value>() given Value satisfies Object {
         subscribers.add(subscriber);
         object subscription satisfies Subscription {
             shared actual void dispose() {
-                subscribers.removeElement(subscriber);
+                subscribers.remove(subscriber);
             }
         }
         return subscription;

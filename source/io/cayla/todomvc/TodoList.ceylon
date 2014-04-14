@@ -42,13 +42,13 @@ class TodoList() {
     }
     
     shared void remove(Todo todo) {
-        todos.removeElement(todo);
+        todos.remove(todo);
     }
     
     shared void removeCompleted() {
         value toRemove = LinkedList(todos.filter((Todo todo) => todo.completed.getValue()));
         for (completed in toRemove) {
-            todos.removeElement(completed);
+            todos.remove(completed);
         }
     }
 

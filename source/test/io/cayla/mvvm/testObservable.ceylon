@@ -79,6 +79,6 @@ shared test void testComputedObservableList() {
     list.add("cc");
     assertEquals(LinkedList({"aa","bb","cc"}),filtered.getValue());
     assertEquals(3, count.getValue());
-    list.removeElement("aa");
+    list.remove("aa");
     assertEquals(LinkedList({"bb","cc"}),filtered.getValue());
 }
