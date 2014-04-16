@@ -33,8 +33,7 @@
     <target name="repo" depends="ceylon-ant-taskdefs">
         <ceylon-copy js="true" recursive="true">
             <module name="ceylon.language" version="1.1.0"/>
-            <module name="io.cayla.mvvm" version="0.1.0"/>
-            <module name="io.cayla.todomvc" version="0.1.0"/>
+            <module name="ceylon.collection" version="1.0.0"/>
         </ceylon-copy>
     </target>
 
